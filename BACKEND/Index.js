@@ -47,11 +47,6 @@ app.post('/',  async(req, res) => {
       const users = await usersCollection.deleteOne(password);
       res.send({success: true , result: users});
       })
-  
-
-
-    
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port http://localhost:${PORT}`);
 }) 

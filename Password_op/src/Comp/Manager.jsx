@@ -10,7 +10,7 @@ const Manager = () => {
   const [passwordArray, setpasswordArray] = useState([]);
 
   const getpassword = async () => {
-    let req = await fetch("http://localhost:4001/")
+    let req = await fetch("http://localhost:4001/" , { method : "GET"} ) // get data from server from databases
     let response = await req.json();
     console.log( response);
     setpasswordArray( response )
@@ -175,11 +175,13 @@ const Manager = () => {
                 type="password"
                 id="password"
               />
-              <span className="absolute right-[3px] top-[4px] text-black cursor-pointer">
+              <span className="absolute right-[3px] top-[9px] text-black cursor-pointer">
                 <img
                   className="p-1"
                   ref={iconRef}
-                  width={28}
+                  width={32}
+                  height={19}
+
                   onClick={showThePass}
                   src="icons/eye3.png"
                   alt="eye"
@@ -189,7 +191,7 @@ const Manager = () => {
           </div>
           <button
             onClick={save_password}
-            className="flex justify-center items-center gap-2 bg-lime-500 hover:bg-lime-700 rounded-xl  h-20 px-7 text-xl font-bold py-2 w-52 "
+            className="flex justify-center items-center gap-2 bg-blue-800 text-white hover:bg-lime-700 rounded-xl  h-20 px-7 text-2xl font-bold py-2 w-62 "
           >
             Save Password
           </button>
@@ -197,10 +199,11 @@ const Manager = () => {
         {/* ---------------table-------------------- */}
         <div className="passwords">
           <h2 className="font-bold text-2xl py-4  text-white ">Your passowrd  </h2>
-          {passwordArray.length == 0 && <div> No password to show </div>}
+          {/* {passwordArray.length == 0 && <marquee direction="left"> <div className="  text-white " > No password to show </div></marquee>} */}
+          {passwordArray.length == 0 && <div className="text-red-500" > No password to show </div>}
           {passwordArray.length != 0 && (
             <table className="table-auto w-full rounded-md overflow-hidden ">
-              <thead className="bg-green-800 text-white">
+              <thead className="bg-blue-700 text-black">
                 <tr>
                   <th className="py-2">Site Name</th>
                   <th className="py-2">Username</th>
@@ -236,8 +239,8 @@ const Manager = () => {
                             }}
                           >
                             <img
-                              src="/public/icons/copy.png"
-                              className="w-6 h-6 pt-1 px-0.5 "
+                              src="/public/icons/copy2.png"
+                              className="w-7 h-7 pt-1 px-1 "
                               alt=""
                             />
                           </div>{" "}
@@ -254,8 +257,8 @@ const Manager = () => {
                             }}
                           >
                             <img
-                              src="/public/icons/copy.png"
-                              className="w-6 h-6 pt-1 px-0.5 "
+                              src="/public/icons/copy2.png"
+                              className="w-7 h-7 pt-1 px-1 "
                               alt=""
                             />
                           </div>{" "}
@@ -272,8 +275,8 @@ const Manager = () => {
                             }}
                           >
                             <img
-                              src="/public/icons/copy.png"
-                              className="w-6 h-6 pt-1 px-0.5 "
+                              src="/public/icons/copy2.png"
+                              className="w-7 h-7 pt-1 px-1 "
                               alt=""
                             />
                           </div>{" "}
@@ -283,12 +286,12 @@ const Manager = () => {
                       <td className=" flex py-2 border border-white text-center justify-center ">
                         <span  className="cursor-pointer" onClick={() => {
                           edit_password(item.id)}} >
-                          <img src="/public/icons/edit2.png" className="w-9 h-9 mx-2  " alt="" />
+                          <img src="/public/icons/edit.png" className="w-7 h-7 mx-2  " alt="" />
 
                         </span> 
                          <span className="cursor-pointer"  onClick={() => {
                           delete_password(item.id)}} >
-                          <img src="/public/icons/delete2.png" className="w-7 h-7 mx-1 " alt="" />
+                          <img src="/public/icons/delete.png" className="w-6 h-6 mx-1 " alt="" />
 
                         </span> 
                         
